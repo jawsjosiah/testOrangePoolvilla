@@ -138,8 +138,7 @@ public class HostDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
-				stmt.close();
+				
 				conn.close();
 			} catch (SQLException e1) {
 				// TODO: handle exception

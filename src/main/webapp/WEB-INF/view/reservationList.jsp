@@ -1,41 +1,7 @@
-<%@page import="java.util.HashMap"%>
-<%@page import="dao.HostDao"%>
-<%@page import="vo.Reservation"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-	/*
-	int currentPage = (Integer)request.getAttribute("currentPage");
-	System.out.println("[reservationList.jsp] currentPage : "+currentPage);
 
-	String reservationStatus = String.valueOf(request.getAttribute("reservationStatus"));
-	System.out.println("[reservationList.jsp] reservationStatus : "+reservationStatus);
-	
-	// 한 페이지당 보여줄 행의 개수 
-	int rowPerPage = (Integer)request.getAttribute("rowPerPage");
-	System.out.println("[reservationList.jsp] rowPerPage : "+rowPerPage);
-	
-	int beginRow = (Integer)request.getAttribute("beginRow");
-	System.out.println("[reservationList.jsp] beginRow : "+beginRow);
-	
-	ArrayList<HashMap<String, Object>> reservationStatusList = (ArrayList<HashMap<String, Object>>)request.getAttribute("reservationStatusList");
-	
-	ArrayList<HashMap<String, Object>> reservationList = (ArrayList<HashMap<String, Object>>)request.getAttribute("reservationList");
-	
-	int totalRow = (Integer)request.getAttribute("totalRow");
-	System.out.println("[reservationList.jsp] totalRow : "+totalRow);
-	
-	// 아래 코드 30 ~ 36 처리 방법 ? 
-	int lastPage = 0;
-	
-	if(totalRow % rowPerPage == 0) {
-		lastPage = totalRow / rowPerPage;
-	} else {
-		lastPage = (totalRow / rowPerPage) + 1;
-	}
-	*/
-%>
+<!--  
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +9,32 @@
 <title>reservationList</title>
 </head>
 <body>
-	
-	
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Orange-poolvilla:poolvillaList</title>
+    <meta name="description" content="Free Bootstrap Theme by uicookies.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/template/css/styles-merged.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/template/css/style.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/template/css/custom.css">
+
+  </head>
+  
+  	<!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+  <body>
+
+  	<!-- START: header -->
+	       <div id="includeHeader"></div>
+	<!-- END: header -->
 	
 	<h1>거래 목록 관리 페이지</h1>
 	
@@ -110,4 +100,13 @@
 	
 	</div>
 </body>
+
+ <script>
+        $("#includeHeader").load('${pageContext.request.contextPath}/includeHeaderController');
+        $("#includeFooter").load('${pageContext.request.contextPath}/includeFooterController');
+  </script>
+  
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/custom.js"></script>
 </html>
