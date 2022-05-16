@@ -48,5 +48,10 @@
 	<div>
 		<a href="${pageContext.request.contextPath}/customerCheckController">관리자 목록</a>
 	</div>
+	
+	<!-- customer.customerId 넘기려면 정확히 어떻게 써야되는지 ? -->
+	<div>
+		<a href="${pageContext.request.contextPath}/freezingCustomerController?customerId=${customer.customerId}">사용자 정지 시키기</a>
+	</div>
 </body>
 </html>

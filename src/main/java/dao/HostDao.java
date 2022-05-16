@@ -479,7 +479,7 @@ public class HostDao {
 		return customer;
 	}
 	
-	// 회원 상세보기 모델 
+		// 회원 상세보기 모델 
 		public ArrayList<HashMap<String, Object>> selectCustomerList() {
 			
 			ArrayList<HashMap<String, Object>> customerList = new ArrayList<>();
@@ -518,4 +518,49 @@ public class HostDao {
 			
 			return customerList;
 		}
+		
+	public void freezeCustomer(String customerId) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		int row = 0;
+		
+		String sql = "UPDATE customer SET `level` = -1"
+				+ " WHERE customer_id = ?"; 
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/orangepoolvilla","root","java1234");
+			conn.setAutoCommit(false);
+			
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, customerId);
+			
+			row = stmt.executeUpdate();
+			
+			if(row == 1) {
+				System.out.println("[HostDao.freezeCustomer()] row : "+row+"행 입력 성공");
+			} else {
+				System.out.println("[HostDao.freezeCustomer()] row : 입력 실패");
+			}
+			
+			conn.commit();
+		} catch (SQLException e) { 
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO: handle exception
+				e1.printStackTrace();
+			}
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+	}
 }

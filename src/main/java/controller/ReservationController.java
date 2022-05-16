@@ -19,7 +19,7 @@ public class ReservationController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String reservationStatus = "";
-		if(request.getParameter("reservationStatus") != null || request.getParameter("reservationStatus") !="")  {
+		if(request.getParameter("reservationStatus") != null)  {
 			reservationStatus = request.getParameter("reservationStatus");
 		}
 		
@@ -70,6 +70,7 @@ public class ReservationController extends HttpServlet {
 					request.setAttribute("reservationStatus", reservationStatus);
 					
 					request.getRequestDispatcher("/WEB-INF/view/reservationList.jsp?reservationStatus="+reservationStatus).forward(request, response);
+				
 				} else if(request.getParameter("currentPage") != null) {
 					request.setAttribute("reservationStatus", reservationStatus);
 					currentPage = Integer.parseInt(request.getParameter("currentPage"));
