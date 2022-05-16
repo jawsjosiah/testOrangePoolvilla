@@ -19,8 +19,11 @@ public class ReservationController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String reservationStatus = "";
+		if(request.getParameter("reservationStatus") != null || request.getParameter("reservationStatus") !="")  {
+			reservationStatus = request.getParameter("reservationStatus");
+		}
 		
-		int currentPage = 2;
+		int currentPage = 1;
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
@@ -60,7 +63,9 @@ public class ReservationController extends HttpServlet {
 		
 		// 예약 상태에 값이 들어왔다면 
 		if(request.getParameter("reservationStatus") != null) {
+			
 			System.out.println("[ReservationController.doGet()] reservationStatus : "+reservationStatus);
+				
 				if(request.getParameter("currentPage") == null) {
 					request.setAttribute("reservationStatus", reservationStatus);
 					
